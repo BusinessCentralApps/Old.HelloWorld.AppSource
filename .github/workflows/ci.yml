@@ -30,6 +30,10 @@ jobs:
           LicenseFile: ${{ secrets.LicenseFile }}
         run: scripts\DevOps-Pipeline.ps1 -environment GitHubActions -version ${{env.version}} -appBuild ${{env.appBuild}} -appRevision ${{env.appRevision}}
 
+      - name: Save manifest
+        run: |
+          @{ "Name" = "${{ github.event.repository.name }}"; "Version" = "${{env.appVersion}}.${{env.appBuild}}.${{env.appRevision}}" } | ConvertTo-Json | Set-Content "output\manifest.json"
+
       - name: Publish Test Results
         uses: mikepenz/action-junit-report@v1
         with:
@@ -62,6 +66,13 @@ jobs:
         with:
           name: TestResults
           path: output/testresults*.xml
+          if-no-files-found: ignore
+
+      - name: Publish Artifacts - Manifest
+        uses: actions/upload-artifact@v2
+        with:
+          name: Manifest
+          path: output/manifest.json
           if-no-files-found: ignore
 
       - name: Cleanup
