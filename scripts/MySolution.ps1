@@ -15,7 +15,7 @@ $replaceValues = @{
     "Default Base App Name" = "My Base App"
     "Default Test App Name" = "My Test App"
     "2.0.0.0" = "1.0.0.0"
-    "https://businesscentralapps.azureedge.net/helloworld-appsource/latest/apps.zip" = ""
+    "https://businesscentralapps.azureedge.net/githubhelloworld-appsource/latest/apps.zip" = ""
     "hw_" = "hw_"
     "dk,us" = "dk,us"
 } + $replaceObjectIds
