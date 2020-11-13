@@ -14,6 +14,9 @@
 		},
 		{
 			"path": ".azureDevOps"
+		},
+		{
+			"path": ".github"
 		}
 	],
 	"settings": {}
