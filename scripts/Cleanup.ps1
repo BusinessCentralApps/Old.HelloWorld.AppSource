@@ -11,7 +11,6 @@ $environmentName = "$($ENV:EnvironmentName)"
 if ($refreshToken -and $environmentName) {
     $authContext = New-BcAuthContext -refreshToken $refreshToken
     if (Get-BcEnvironments -bcAuthContext $authContext | Where-Object { $_.Name -eq $environmentName -and  $_.type -eq "Sandbox" }) {
-        $status = "ok"
         Remove-BcEnvironment -bcAuthContext $authContext -environment $environmentName
     }
 }
