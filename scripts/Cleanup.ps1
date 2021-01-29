@@ -5,6 +5,7 @@
 )
 
 . (Join-Path $PSScriptRoot "Read-Settings.ps1") -environment $environment
+. (Join-Path $PSScriptRoot "Install-BcContainerHelper.ps1") -bcContainerHelperVersion $bcContainerHelperVersion
 
 $refreshToken = "$($ENV:BcSaasRefreshToken)"
 $environmentName = "$($ENV:EnvironmentName)"
@@ -16,8 +17,6 @@ if ($refreshToken -and $environmentName) {
 }
 
 if ("$AgentName" -ne "Hosted Agent" -and "$AgentName" -notlike "Azure Pipelines*") {
-    . (Join-Path $PSScriptRoot "Install-BcContainerHelper.ps1") -bcContainerHelperVersion $bcContainerHelperVersion
-
     $cleanupMutexName = "Cleanup"
     $cleanupMutex = New-Object System.Threading.Mutex($false, $cleanupMutexName)
     try {
