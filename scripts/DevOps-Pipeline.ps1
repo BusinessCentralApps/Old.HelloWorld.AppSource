@@ -22,6 +22,24 @@ $baseFolder = (Get-Item (Join-Path $PSScriptRoot "..")).FullName
 . (Join-Path $PSScriptRoot "Read-Settings.ps1") -environment $environment -version $version
 . (Join-Path $PSScriptRoot "Install-BcContainerHelper.ps1") -bcContainerHelperVersion $bcContainerHelperVersion -genericImageName $genericImageName
 
+$authContext = $null
+$refreshToken = "$($ENV:BcSaasRefreshToken)"
+$environmentName = "$($ENV:EnvironmentName)"
+if ($refreshToken -and $environmentName) {
+    $authContext = New-BcAuthContext -refreshToken $refreshToken
+    if (Get-BcEnvironments -bcAuthContext $authContext | Where-Object { $_.Name -eq $environmentName -and  $_.type -eq "Sandbox" }) {
+        Remove-BcEnvironment -bcAuthContext $authContext -environment $environmentName
+    }
+    New-BcEnvironment -bcAuthContext $authContext -environment $environmentName -countryCode us -environmentType "Sandbox"
+    $baseApp = Get-BcPublishedApps -bcAuthContext $authContext -environment $environmentName | Where-Object { $_.Name -eq "Base Application" }
+    $artifact = Get-BCArtifactUrl `
+        -country $bcEnvironment.countryCode `
+        -version $baseApp.Version `
+        -select Closest
+    
+    Write-Host "Using Artifacts: $artifact"
+}
+
 $params = @{}
 $insiderSasToken = "$ENV:insiderSasToken"
 $licenseFile = "$ENV:licenseFile"
@@ -50,6 +68,8 @@ Run-AlPipeline @params `
     -pipelinename $pipelineName `
     -containerName $containerName `
     -imageName $imageName `
+    -bcAuthContext $authContext `
+    -environment $environmentName `
     -artifact $artifact.replace('{INSIDERSASTOKEN}',$insiderSasToken) `
     -memoryLimit $memoryLimit `
     -baseFolder $baseFolder `
