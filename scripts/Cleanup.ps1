@@ -6,6 +6,16 @@
 
 . (Join-Path $PSScriptRoot "Read-Settings.ps1") -environment $environment
 
+$refreshToken = "$($ENV:BcSaasRefreshToken)"
+$environmentName = "$($ENV:EnvironmentName)"
+if ($refreshToken -and $environmentName) {
+    $authContext = New-BcAuthContext -refreshToken $refreshToken
+    if (Get-BcEnvironments -bcAuthContext $authContext | Where-Object { $_.Name -eq $environmentName -and  $_.type -eq "Sandbox" }) {
+        $status = "ok"
+        Remove-BcEnvironment -bcAuthContext $authContext -environment $environmentName
+    }
+}
+
 if ("$AgentName" -ne "Hosted Agent" -and "$AgentName" -notlike "Azure Pipelines*") {
     . (Join-Path $PSScriptRoot "Install-BcContainerHelper.ps1") -bcContainerHelperVersion $bcContainerHelperVersion
 
