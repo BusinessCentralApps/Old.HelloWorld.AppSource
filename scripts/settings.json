@@ -14,6 +14,7 @@
     "enableAppSourceCop": true,
     "enablePerTenantExtensionCop": false,
     "enableUICop": true,
+    "useDefaultAppSourceRuleSet": true,
     "appSourceCopMandatoryAffixes": "hw_",
     "appSourceCopSupportedCountries": "us,dk,gb",
     "additionalCountries": "dk,gb",
@@ -22,7 +23,7 @@
     "versions": [
         {
             "version": "ci",
-            "artifact": "//17.0.17126.17791/us",
+            "artifact": "//17.3.20469.21555/us",
             "additionalCountries": "",
             "cacheImage": true,
             "CreateRuntimePackages": true

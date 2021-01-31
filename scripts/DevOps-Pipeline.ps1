@@ -91,6 +91,7 @@ Run-AlPipeline @params `
     -enableAppSourceCop:$enableAppSourceCop `
     -enablePerTenantExtensionCop:$enablePerTenantExtensionCop `
     -enableUICop:$enableUICop `
+    -useDefaultAppSourceRuleSet:$useDefaultAppSourceRuleSet `
     -azureDevOps:($environment -eq 'AzureDevOps') `
     -gitLab:($environment -eq 'GitLab') `
     -gitHubActions:($environment -eq 'GitHubActions') `
