@@ -30,5 +30,6 @@
                      "TranslationFile"
                  ],
     "showMyCode":  true,
-    "target":  "Cloud"
+    "target":  "Cloud",
+    "applicationInsightsKey": "00000000-0000-0000-0000-000000000000"
 }
