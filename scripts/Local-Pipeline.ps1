@@ -52,6 +52,7 @@ Run-AlPipeline `
     -enableAppSourceCop:$enableAppSourceCop `
     -enablePerTenantExtensionCop:$enablePerTenantExtensionCop `
     -enableUICop:$enableUICop `
+    -useDefaultAppSourceRuleSet:$useDefaultAppSourceRuleSet `
     -AppSourceCopMandatoryAffixes $appSourceCopMandatoryAffixes `
     -AppSourceCopSupportedCountries $appSourceCopSupportedCountries `
     -additionalCountries $additionalCountries `
