@@ -18,7 +18,7 @@
     "appSourceCopMandatoryAffixes": "hw_",
     "appSourceCopSupportedCountries": "us,dk,gb",
     "additionalCountries": "dk,gb",
-    "bcContainerHelperVersion": "2.0.7",
+    "bcContainerHelperVersion": "preview",
     "vaultNameForLocal": "BuildVariables",
     "versions": [
         {
@@ -35,6 +35,7 @@
         },
         {
             "version": "cloud",
+            "bcContainerHelperVersion": "2.0.7",
             "additionalCountries": "",
             "artifact": "///us/Current"
         },
