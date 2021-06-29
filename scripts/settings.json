@@ -36,6 +36,7 @@
         {
             "version": "cloud",
             "additionalCountries": "",
+            "bcContainerHelperVersion": "2.0.7",
             "artifact": "///us/Current"
         },
         {
