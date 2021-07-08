@@ -6,8 +6,8 @@ pageextension 70074170 hw_CustomerListExt extends "Customer List"
 {
     trigger OnOpenPage();
     var
-        hwhellobase: Codeunit "hw_Hello Base";
+        "hw_Hello Base": Codeunit "hw_Hello Base";
     begin
-        Message(hwhellobase.GetText());
+        Message("hw_Hello Base".GetText());
     end;
 }

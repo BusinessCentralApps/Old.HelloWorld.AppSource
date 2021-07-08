@@ -57,4 +57,5 @@ Run-AlPipeline `
     -AppSourceCopSupportedCountries $appSourceCopSupportedCountries `
     -additionalCountries $additionalCountries `
     -credential $credential `
-    -appBuild $appBuild -appRevision $appRevision
+    -appBuild $appBuild -appRevision $appRevision `
+    -vsixFile (Get-LatestAlLanguageExtensionUrl)

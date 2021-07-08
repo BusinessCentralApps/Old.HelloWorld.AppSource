@@ -33,6 +33,7 @@ jobs:
       LicenseFile: '$(LicenseFile)'
       CodeSignCertPfxFile: '$(CodeSignCertPfxFile)'
       CodeSignCertPfxPassword: '$(CodeSignCertPfxPassword)'
+      ApplicationInsightsKey: '$(applicationInsightsKey)'
     inputs:
       targetType: filePath
       filePath: 'scripts\DevOps-Pipeline.ps1'

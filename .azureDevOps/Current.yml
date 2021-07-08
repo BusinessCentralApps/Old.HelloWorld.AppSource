@@ -2,7 +2,7 @@ trigger: none
 
 schedules:
 - cron: '0 0 * * *'
-  displayName: Daily Next Minor build
+  displayName: Daily Current build
   branches:
     include:
     - master
@@ -40,6 +40,7 @@ jobs:
       LicenseFile: '$(LicenseFile)'
       CodeSignCertPfxFile: '$(CodeSignCertPfxFile)'
       CodeSignCertPfxPassword: '$(CodeSignCertPfxPassword)'
+      ApplicationInsightsKey: '$(applicationInsightsKey)'
     inputs:
       targetType: filePath
       filePath: 'scripts\DevOps-Pipeline.ps1'

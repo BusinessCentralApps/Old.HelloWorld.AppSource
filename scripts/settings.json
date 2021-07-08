@@ -23,7 +23,7 @@
     "versions": [
         {
             "version": "ci",
-            "artifact": "//17.3.20469.21555/us",
+            "artifact": "//18.2.26217.26754/us",
             "additionalCountries": "",
             "cacheImage": true,
             "CreateRuntimePackages": true
@@ -36,7 +36,6 @@
         {
             "version": "cloud",
             "additionalCountries": "",
-            "bcContainerHelperVersion": "2.0.7",
             "artifact": "///us/Current"
         },
         {

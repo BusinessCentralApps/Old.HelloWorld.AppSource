@@ -29,12 +29,6 @@ jobs:
 
   steps:
   - task: PowerShell@2
-    displayName: 'Set BuildNumber'
-    inputs:
-      targetType: inline
-      script: 'Write-Host "##vso[build.updatebuildnumber]$(appVersion).$(appBuild).$(appRevision)"'
-
-  - task: PowerShell@2
     displayName: 'Run Pipeline'
     env:
       InsiderSasToken: '$(InsiderSasToken)'
@@ -43,6 +37,7 @@ jobs:
       CodeSignCertPfxPassword: '$(CodeSignCertPfxPassword)'
       BcSaasRefreshToken: '$(BcSaasRefreshToken)'
       EnvironmentName: '$(environmentName)'
+      ApplicationInsightsKey: '$(applicationInsightsKey)'
     inputs:
       targetType: filePath
       filePath: 'scripts\DevOps-Pipeline.ps1'

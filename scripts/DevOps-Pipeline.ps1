@@ -37,7 +37,7 @@ if ($refreshToken -and $environmentName) {
         $baseApp = Get-BcPublishedApps -bcAuthContext $authContext -environment $environmentName | Where-Object { $_.Name -eq "Base Application" }
     } while (!($baseApp))
     $baseapp | Out-Host
-    
+
     $artifact = Get-BCArtifactUrl `
         -country $countryCode `
         -version $baseApp.Version `
@@ -110,7 +110,9 @@ Run-AlPipeline @params `
     -additionalCountries $additionalCountries `
     -buildArtifactFolder $buildArtifactFolder `
     -CreateRuntimePackages:$CreateRuntimePackages `
-    -appBuild $appBuild -appRevision $appRevision
+    -appBuild $appBuild -appRevision $appRevision `
+    -vsixFile (Get-LatestAlLanguageExtensionUrl) `
+    -applicationInsightsKey "$($ENV:applicationInsightsKey)"
 
 if ($environment -eq 'AzureDevOps') {
     Write-Host "##vso[task.setvariable variable=TestResults]$allTestResults"
