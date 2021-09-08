@@ -31,7 +31,7 @@ if ($refreshToken -and $environmentName) {
         Remove-BcEnvironment -bcAuthContext $authContext -environment $environmentName
     }
     $countryCode = $artifact.Split('/')[3]
-    New-BcEnvironment -bcAuthContext $authContext -environment $environmentName -countryCode $countrycode -environmentType "Sandbox" | Out-Null
+    New-BcEnvironment -bcAuthContext $authContext -environment $environmentName -countryCode $countrycode -environmentType "Sandbox" -ringName "PROD" | Out-Null
     do {
         Start-Sleep -Seconds 10
         $baseApp = Get-BcPublishedApps -bcAuthContext $authContext -environment $environmentName | Where-Object { $_.Name -eq "Base Application" }
