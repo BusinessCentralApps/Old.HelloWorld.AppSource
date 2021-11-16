@@ -1,4 +1,4 @@
-codeunit 50133 "HelloWorld Test"
+codeunit 50133 "HelloWorld.Test"
 {
     Subtype = Test;
 
@@ -18,7 +18,7 @@ codeunit 50133 "HelloWorld Test"
     [MessageHandler]
     procedure HelloWorldMessageHandler(Message: Text[1024])
     begin
-        MessageDisplayed := Message = 'App Published: Hello World Base!';
+        MessageDisplayed := MessageDisplayed or (Message = 'App Published: Hello World Base!');
     end;
 
     var
